@@ -29,7 +29,7 @@ export class UsersController {
    return this.UserService.findById(id)
   }
 
-  @Post()
+  @Post('/register')
   // control body parameters ===> (DTO) data transfer object
   createUser(@Body() CreateUserDto: CreateUserDto) {
    return this.UserService.createUser(CreateUserDto)
