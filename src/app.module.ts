@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://hossam:nodejs123@learn-mongo-db.wmpsfgz.mongodb.net/Saheb'),
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRoot(process.env.MongoUrl),
     UsersModule
   ],
     
