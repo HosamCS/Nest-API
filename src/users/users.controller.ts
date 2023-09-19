@@ -16,7 +16,7 @@ import { UserService } from './user.service'
 
 @Controller('users')
 export class UsersController {
-  private users: UserEntity[] = [];
+  // private users: UserEntity[] = [];
   constructor(private UserService: UserService){}
 
   @Get()
@@ -29,11 +29,11 @@ export class UsersController {
    return this.UserService.findById(id)
   }
 
-  @Post('/register')
-  // control body parameters ===> (DTO) data transfer object
-  createUser(@Body() CreateUserDto: CreateUserDto) {
-   return this.UserService.createUser(CreateUserDto)
-  }
+  // @Post('/register')
+  // // control body parameters ===> (DTO) data transfer object
+  // createUser(@Body() CreateUserDto: CreateUserDto) {
+  //  return this.UserService.createUser(CreateUserDto)
+  // }
 
   @Patch(':id')
   // @UsePipes(ValidationPipe) // call in main globaly to apply validation in all application

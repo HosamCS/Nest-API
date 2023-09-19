@@ -21,26 +21,26 @@ export class UserService {
     return await this.userModel.findById(id);
   }
 
-  async createUser(CreateUserDto: CreateUserDto) {
-    // check if user already exists
+  // async createUser(CreateUserDto: CreateUserDto) {
+  //   // check if user already exists
 
-    const existingUser = await this.userModel
-      .findOne({ email: CreateUserDto.email })
-      .exec();
-    if (!existingUser) {
-      const hashPassword = await bcrypt.hash(CreateUserDto.password, 12);
-      const newUser = new this.userModel({
-        ...CreateUserDto,
-        password: hashPassword,
-      });
-      const result = await newUser.save();
-      console.log(result);
+  //   const existingUser = await this.userModel
+  //     .findOne({ email: CreateUserDto.email })
+  //     .exec();
+  //   if (!existingUser) {
+  //     const hashPassword = await bcrypt.hash(CreateUserDto.password, 12);
+  //     const newUser = new this.userModel({
+  //       ...CreateUserDto,
+  //       password: hashPassword,
+  //     });
+  //     const result = await newUser.save();
+  //     console.log(result);
 
-      return result;
-    } else {
-      throw new ConflictException('User with this email already exists');
-    }
-  }
+  //     return result;
+  //   } else {
+  //     throw new ConflictException('User with this email already exists');
+  //   }
+  // }
 
   async updateUser(id: string, UpdateUserDto: UpdateUserDto) {
     const updateUser = await this.userModel.findByIdAndUpdate(id, {
